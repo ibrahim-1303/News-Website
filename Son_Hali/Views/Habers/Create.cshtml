@@ -1,0 +1,62 @@
+﻿@model Son_Hali.Models.Haber
+
+
+@{
+    Layout = null;
+}
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+
+<h1>Yeni Haber</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResimDosyası" class="control-label"></label>
+                <input asp-for="ResimDosyası" accept="image/jpeg" />
+                <span asp-validation-for="ResimDosyası" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="İcerik" class="control-label"></label>
+                <input asp-for="İcerik" class="form-control" />
+                <span asp-validation-for="İcerik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SonDakika" class="control-label"></label>
+                <input asp-for="SonDakika" class="form-control" />
+                <span asp-validation-for="SonDakika" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Yayınla" class="btn btn-primary" />
+            </div>
+            
+           
+        </form>
+    </div>
+</div>
+
+
+
+
+@*<div class="container">
+   
+</div>*@
+
+
+
+<div>
+    <a asp-action="Index">Listeye Geri Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

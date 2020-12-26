@@ -1,0 +1,145 @@
+﻿@using Microsoft.EntityFrameworkCore.Internal
+@model IEnumerable<Son_Hali.Models.Haber>
+
+
+@{
+    ViewData["Title"] = "EnSonHaber";
+}
+
+
+
+<body>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+
+
+
+        <section id="contentSection">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="left_content">
+                        <div class="single_page">
+
+                            @foreach (var item in Model.Reverse())
+                            {
+
+
+                                <a asp-action="Details" asp-route-id="@item.HaberId"><h1>@Html.DisplayFor(modelItem => item.Baslik)</h1></a>
+
+                                <div class="single_page_content">
+                                    <img class="img-center" src="@("~/HaberResimleri/" + item.ResimYolu)" class="card-img-top" alt="..." asp-append-version="true">
+                                    <blockquote> @Html.DisplayFor(modelItem => item.İcerik) </blockquote>
+
+                                </div>}
+                            <div class="social_link">
+                                <ul class="sociallink_nav">
+                                    <li><a href="https://tr-tr.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://www.flickr.com/explore"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/ibrahim-ayfer-2aa989194/"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.reddit.com/r/Priconne/comments/d478wi/prinfest/"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <div class="related_post">
+                                <h2>En Fazla Yorum Alan<i class="fa fa-thumbs-o-up"></i></h2>
+                                @foreach (var item in Model.Reverse())
+                                {
+                                    <ul class="spost_nav wow fadeInDown animated">
+
+
+                                        <li>
+                                            <div class="media">
+                                                <a asp-action="Details" asp-route-id="@item.HaberId" class="media-left"><img class="img-center" src="@("~/HaberResimleri/" + item.ResimYolu)" class="card-img-top" alt="..." asp-append-version="true"></a>
+                                                <div class="media-body"> <a asp-action="Details" asp-route-id="@item.HaberId" class="catg_title"> @item.Baslik</a> </div>
+                                            </div>
+                                        </li>
+                                    </ul>}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <nav class="nav-slit">
+                    <a class="prev" href="http://www.coca-cola.com.tr/tr/home/">
+                        <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
+                        <div>
+                            <h3>Sponsorlar</h3>
+                            <img src="~/HaberResimleri/indir.jfif" alt="" />
+                        </div>
+
+                    </a> <a class="next" href="https://www.redbull.com/tr-tr/">
+                        <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
+                        <div>
+                            <h3>Sponsorlar</h3>
+
+                            <img src="~/HaberResimleri/indir (1).jfif">~/HaberResimleri/indir (1).jfif" alt="" />
+                        </div>
+                    </a>
+                </nav>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <aside class="left_content">
+                        <div class="single_sidebar">
+                            @*<ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Kategori</a></li>
+                                    <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
+                                    <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Yorumlar</a></li>
+                                </ul>*@
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="category">
+                                    <ul>
+                                        <iframe src="https://www.gazeteoku.com/siteneekle/cokokunanyazarlar.html" width="300" height="800" scrolling="no" frameborder="0"></iframe>
+                                    </ul>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane" id="comments">
+                                    <ul class="spost_nav">
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="single_page.html" class="media-left"> <img alt="" src="~/images/post_img1.jpg"> </a>
+                                                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="single_page.html" class="media-left"> <img alt="" src="~/images/post_img2.jpg"> </a>
+                                                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="single_page.html" class="media-left"> <img alt="" src="~/images/post_img1.jpg"> </a>
+                                                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="single_page.html" class="media-left"> <img alt="" src="~/images/post_img2.jpg"> </a>
+                                                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <body style="margin: 0">
+                            <div class="container float-center mp-0" style="max-width:146px;margin:0px;padding-left:70px;"> <table class="bg-white" width="200" style="padding-left:0px;border-spacing:0px;">     <tr> <td><a href="https://www.hurriyet.com.tr/" _fcksavedurl="https://www.hurriyet.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Hürriyet" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/hurriyet.jpg" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/hurriyet.jpg"></a></td> <td><a href="https://www.posta.com.tr/" _fcksavedurl="https://www.posta.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Posta" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/posta.gif" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/posta.gif"></a></td> <td><a href="https://www.birgun.net/" _fcksavedurl="https://www.birgun.net/" target="_blank"><img class="img-thumbnail rounded" alt="Birgün" border="0" height="44" width="44" src="https://img.webme.com/pic/b/beterbocekler2/birgun.png" _fcksavedurl="https://img.webme.com/pic/b/beterbocekler2/birgun.png"></a></td>     </tr><tr> <td><a href="https://www.sozcu.com.tr/" _fcksavedurl="https://www.sozcu.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Sözcü" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/sozcu.jpg?rand=1582719615,9436" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/sozcu.jpg?rand=1582719615,9436"></a></td> <td><a href="https://www.turkiyegazetesi.com.tr/" _fcksavedurl="https://www.turkiyegazetesi.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Türkiye" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/Turkiye.png?rand=1582719785,897" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/Turkiye.png?rand=1582719785,897"></a></td> <td><a href="https://www.sabah.com.tr/" _fcksavedurl="https://www.sabah.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Sabah" border="0" height="44" width="44" src="https://img.webme.com/pic/b/beterbocekler2/sabah.png" _fcksavedurl="https://img.webme.com/pic/b/beterbocekler2/sabah.png"></a></td>     </tr><tr> <td><a href="https://www.milliyet.com.tr/" _fcksavedurl="https://www.milliyet.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Milliyet" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/milliyet.png?rand=1582720114,4247" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/milliyet.png?rand=1582720114,4247"></a></td> <td><a href="https://www.cumhuriyet.com.tr/" _fcksavedurl="https://www.cumhuriyet.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Cumhuriyet" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/cumhuriyet.jpg" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/cumhuriyet.jpg"></a></td> <td><a href="https://www.aksam.com.tr/" _fcksavedurl="https://www.aksam.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Akşam" border="0" height="44" width="44" src="https://img.webme.com/pic/b/beterbocekler2/aksam.png" _fcksavedurl="https://img.webme.com/pic/b/beterbocekler2/aksam.png"></a></td>     </tr><tr> <td><a href="https://www.yenisafak.com/" _fcksavedurl="https://www.yenisafak.com/" target="_blank"><img class="img-thumbnail rounded" alt="Yeni Şafak" border="0" height="44" width="44" src="https://img.webme.com/pic/b/beterbocekler2/yenisafak.jpg" _fcksavedurl="https://img.webme.com/pic/b/beterbocekler2/yenisafak.jpg"></a></td> <td><a href="https://www.gunes.com/" _fcksavedurl="https://www.gunes.com/" target="_blank"><img class="img-thumbnail rounded" alt="Güneş" border="0" height="44" width="44" src="https://img.webme.com/vorschau/b/beterbocekler2/gunes.jpg?rand=1582720683,1343" _fcksavedurl="https://img.webme.com/vorschau/b/beterbocekler2/gunes.jpg?rand=1582720683,1343"></a></td> <td><a href="https://www.aydinlik.com.tr/" _fcksavedurl="https://www.aydinlik.com.tr/" target="_blank"><img class="img-thumbnail rounded" alt="Aydınlık" border="0" height="44" width="44" src="https://img.webme.com/pic/b/beterbocekler2/aydinlik.jpg" _fcksavedurl="https://img.webme.com/pic/b/beterbocekler2/aydinlik.jpg"></a></td>     </tr> <tr><td colspan="3">  	<ul class="kat"> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.korkusuz.com.tr/" _fcksavedurl="https://www.korkusuz.com.tr/" target="_blank">KORKUSUZ</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.dunya.com/" _fcksavedurl="https://www.dunya.com/" target="_blank">DÜNYA</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.milligazete.com.tr/" _fcksavedurl="https://www.milligazete.com.tr/" target="_blank">MİLLİ GAZETE</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.ortadogugazetesi.com/" _fcksavedurl="https://www.ortadogugazetesi.com/" target="_blank">ORTADOGU</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.posta.com.tr/" _fcksavedurl="https://www.posta.com.tr/" target="_blank">POSTA</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.haberturk.com/" _fcksavedurl="https://www.haberturk.com/" target="_blank">HABERTÜRK</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.takvim.com.tr/" _fcksavedurl="https://www.takvim.com.tr/" target="_blank">TAKVİM</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.star.com.tr/" _fcksavedurl="https://www.star.com.tr/" target="_blank">STAR</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.istiklal.com.tr/" _fcksavedurl="https://www.istiklal.com.tr/" target="_blank">İSTİKLAL</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.yenicaggazetesi.com.tr/" _fcksavedurl="https://www.yenicaggazetesi.com.tr/" target="_blank">YENİÇAĞ</a></li> 						<li><i class="fa fa-location-arrow"></i> <a href="https://www.ekonomigazetesi.com/" _fcksavedurl="https://www.ekonomigazetesi.com/" target="_blank">EKONOMİ</a></li>  					</ul> </td></tr></table> </div>
+                        </body>
+
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+

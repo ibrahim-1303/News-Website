@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Son_Hali.Models.Haber>
+
+
+@{
+    Layout = null;
+}
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+<h1>Yayında Olan Haberler</h1>
+
+<a asp-controller="Habers" asp-action="Create" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Yeni Haber</a>
+@*<a asp-controller="File" asp-action="Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Videolar</a>*@
+<a asp-controller="Admin" asp-action="CikisYap" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Çıkış YAp</a>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.İcerik)
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.İcerik)
+                </td>
+
+                <td>
+                    <a asp-controller="Habers" asp-action="Edit" class="btn btn-outline-primary" role="button" aria-pressed="True" asp-route-id="@item.HaberId">Değiştir</a>
+                    <a asp-controller="Habers" asp-action="Details" class="btn btn-outline-warning" role="button" aria-pressed="True" asp-route-id="@item.HaberId">Detay</a>
+                    <a asp-controller="Habers" asp-action="Delete" class="btn btn-outline-danger" role="button" aria-pressed="True" asp-route-id="@item.HaberId">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,208 @@
+﻿@model IEnumerable<Son_Hali.Models.Haber>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]EnSonHaber.Com.Tr</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/font.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/li-scroller.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+
+
+    @*Twitter Kuşu için*@
+    <script type="text/javascript" src="https://img81.xooimage.com/files/7/5/b/twitter-kusu-354069c.js"></script>         <!--script adresi-->
+    <script type="text/javascript">
+        var birdSprite = "https://img.webme.com/pic/b/beterbocekler2/twitter-kusu.png";
+        var targetElems = new Array("img", "hr", "table", "td", "div", "input", "textarea", "button", "select", "ul", "ol", "li",
+            "h1", "h2", "h3", "h4", "p", "code", "object", "a", "b", "strong", "span");
+        var twitterAccount = "https://www.facebook.com/ibrahim.ayfer";
+        var tweetThisText = "https://www.facebook.com/ibrahim.ayfer";
+        tripleflapInit();
+    </script>
+</head>
+
+</html>
+
+<body>
+    @*Piyasa bandı*@
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div><a href="https://tr.tradingview.com" _fcksavedurl="https://tr.tradingview.com" rel="noopener" target="_blank"></a>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    {
+                        "proName": "OANDA:SPX500USD",
+                        "title": "SP 500"
+                    },
+                    {
+                        "proName": "OANDA:NAS100USD",
+                        "title": "Nasdaq 100"
+                    },
+                    {
+                        "proName": "FX_IDC:EURUSD",
+                        "title": "EUR/USD"
+                    },
+                    {
+                        "proName": "BITSTAMP:BTCUSD",
+                        "title": "BTC/USD"
+                    },
+                    {
+                        "proName": "BITSTAMP:ETHUSD",
+                        "title": "ETH/USD"
+                    }
+                ],
+                    "colorTheme": "light",
+                        "isTransparent": false,
+                            "displayMode": "adaptive",
+                                "locale": "tr"
+            }
+        </script>
+    </div>
+
+    <header id="header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="header_top">
+                    <div class="header_top_left">
+                        <ul class="top_nav">
+                            <li class="active"><a asp-controller="Home" asp-action="Index"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Anasayfa</span></a></li>
+                            <li><a asp-action="SonDakika">Son Dakika</a></li>
+                            <li> <a asp-action="SonDakika">Gündem</a></li>
+                            <li><a asp-action="SonDakika">Siyaset</a></li>
+                            <li><a asp-action="SonDakika">Spor</a></li>
+                            <li><a asp-action="SonDakika">Ekonomi</a></li>
+
+                        </ul>
+                        
+                    </div>
+                    <div class="header_top_right">
+                        <p>
+                            
+                            <li>
+                                <iframe src="https://free.timeanddate.com/clock/i7hdqgbf/n2238/tltr28/fn6/fs16/fc9ff/tc000/ftb/pa8/tt0/tw1/th1/tb4" frameborder="5" width="308" height="52"></iframe>
+                            </li>
+                            <form method="get" action="https://www.google.com/search" target="_blank">
+                                <input size="34" ength="280" max="" style=" “ border-style: " name="q" value="google da ara" type="text" /> <input type="submit" style=" “ color: " name="btng" value="ara" /><input type="hidden" name="forid" value="1" /> <input type="hidden" name="ie" value="UTF-8" /> <input type="hidden" name="oe" value="UTF-8" /> <input type="hidden" name="cof"> <input type="hidden" name="hl" value="tr" />
+                            </form>
+                            <iframe src="https://www.canlitv.vin/kanallar.php?kanal=bht-3" frameborder="2" width="322" height="100" allowfullscreen></iframe>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="header_bottom">
+                    <div class="logo_area"><a asp-action="Index" class="logo"><img src="images/logo.jpg" alt=""></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+   
+
+    <section id="newsSection">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="latest_newsarea">
+                    <span>Satır Başları</span>
+                    <ul id="ticker01" class="news_sticker">
+
+                        @foreach (var item in Model)
+                        {
+                            <li><a asp-action="Details" asp-route-id="@item.HaberId"><img src="@("~/HaberResimleri/"+item.ResimYolu)" class="card-img-top" alt="..." asp-append-version="true" alt="">@Html.DisplayFor(modelItem => item.Baslik)</a></li>
+                        }
+                    </ul>
+                    <div class="social_area">
+                        <ul class="social_nav">
+                            <li class="facebook"><a href="https://tr-tr.facebook.com/"></a></li>
+                            <li class="twitter"><a href="https://twitter.com/"></a></li>
+                            <li class="flickr"><a href="https://www.flickr.com/explore"></a></li>
+                            <li class="pinterest"><a href="https://printfest.uk/artists/"></a></li>
+                            <li class="googleplus"><a href="#"></a></li>
+                            <li class="vimeo"><a href="#"></a></li>
+                            <li class="youtube"><a href="https://www.youtube.com/"></a></li>
+                            <li class="mail"><a href="https://outlook.live.com/owa/"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+
+
+    <footer id="footer">
+        <div class="footer_top">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_widget wow fadeInLeftBig">
+                        <h2>Flickr Images</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_widget wow fadeInDown">
+                        <h2>Tag</h2>
+                        @*<ul class="tag_nav">
+                                <li><a href="#">Games</a></li>
+                                <li><a href="#">Sports</a></li>
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Life &amp; Style</a></li>
+                                <li><a href="#">Technology</a></li>
+                                <li><a href="#">Photo</a></li>
+                                <li><a href="#">Slider</a></li>
+                            </ul>*@
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_widget wow fadeInRightBig">
+      
+                        <h2>Contact</h2>
+                        <p>opyright 2005-2020 Ensonhaber.com WhatsApp Hattı: +90. 533 378 20 00 Telefon: +90. 216 577 58 58 (pbx) Destek: info@ensonhaber.com</p>
+                        <address>
+                            Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax: 123-546-567
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="footer_bottom">
+                <p class="copyright">Copyright &copy; 2045 <a href="~/index.html">NewsFeed</a></p>
+                <p class="developer">Developed By Wpfreeware</p>
+            </div>*@
+    </footer>
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+    <script src="~/assets/js/jquery.li-scroller.1.0.js"></script>
+    <script src="~/assets/js/jquery.newsTicker.min.js"></script>
+    <script src="~/assets/js/jquery.fancybox.pack.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+
+    <script src="~/assets/js/html5shiv.min.js"></script>
+    <script src="~/assets/js/respond.min.js"></script>
+
+</body>
